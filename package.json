@@ -1,0 +1,23 @@
+{
+  "name": "webgpu_rendering",
+  "version": "1.0.0",
+  "description": "simple webgpu rendering website for testing out lots of shaders / visual algorithms / postprocessing techniques.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grisha-kravchenko/webgpu_rendering.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grisha-kravchenko/webgpu_rendering/issues"
+  },
+  "homepage": "https://github.com/grisha-kravchenko/webgpu_rendering#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
