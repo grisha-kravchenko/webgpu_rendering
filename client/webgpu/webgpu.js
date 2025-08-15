@@ -56,6 +56,9 @@ export class webgpu {
     /** @type {any} */ indexBuffer
     /** @type {any} */ uniformBuffer
     /** @type {number} */ indiciesLength
+    /** @type {Uniforms} */ uniforms
+    /** @type {any} */ bindGroupLayout
+    /** @type {any} */ pipelineLayout
 
     throwError(error) {
         alert(error)
@@ -112,11 +115,26 @@ export class webgpu {
         this.indiciesLength = indices.length
     }
 
-    setupUniforms() {
+    /** @param {Uniforms} uniformTypes */
+    setupUniforms(uniformTypes) {
         this.uniformBuffer = device.createBuffer({
-            size: 0, // configure it late
+            size: uniformTypes.totalSize,
             usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
         });
+
+        this.uniforms = uniformTypes
+
+        this.bindGroupLayout = this.device.createBindGroupLayout({
+            entries: [{
+                binding: 0,
+                visibility: GPUShaderStage.VERTEX | GPUShaderStage.FRAGMENT,
+                buffer: { type: 'uniform' }
+            }]
+        })
+
+        this.pipelineLayout = device.createPipelineLayout({
+            bindGroupLayouts: [bindGroupLayout]
+        })
     }
 }
 
